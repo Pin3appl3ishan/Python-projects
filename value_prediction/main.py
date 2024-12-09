@@ -19,7 +19,7 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
     y = np.array(df['outputs']).reshape(-1,1)
 
     # Split the data into training data to test our model
-    train_X, test_X, train_y, text_y = train_test_split(X, y, random_state=0, test_size=.20)
+    train_X, test_X, train_y, test_y = train_test_split(X, y, random_state=0, test_size=.20)
 
     # Initialize the model and test it
     model = LinearRegression()
@@ -37,4 +37,10 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
         raise NotImplementedError('Plot function has not been created yet')
     
     return Prediction(value=y_prediction[0][0],
-                    r2_score=r2_score(text_y, y_test_prediction))
+                    r2_score=r2_score(test_y, y_test_prediction),
+                    slope=model.coef_[0][0],
+                    intercept=model.intercept_[0],
+                    mean_absolute_error=mean_absolute_error(test_y, y_test_prediction))
+
+def display_plot(inputs: list[float], outputs: list[float], y_line):
+    pass
