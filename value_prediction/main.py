@@ -34,7 +34,8 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
 
     # Plot
     if plot:
-        raise NotImplementedError('Plot function has not been created yet')
+        # raise NotImplementedError('Plot function has not been created yet')
+        display_plot(inputs=X, outputs=y, y_line=y_line)
     
     return Prediction(value=y_prediction[0][0],
                     r2_score=r2_score(test_y, y_test_prediction),
@@ -43,4 +44,8 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
                     mean_absolute_error=mean_absolute_error(test_y, y_test_prediction))
 
 def display_plot(inputs: list[float], outputs: list[float], y_line):
-    pass
+    plt.scatter(inputs, outputs, s=12)
+    plt.xlabel('Inputs')
+    plt.ylabel('Outputs')
+    plt.plot(inputs, y_line, color='r')
+    plt.show()
