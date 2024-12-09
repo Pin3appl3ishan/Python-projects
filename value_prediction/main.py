@@ -21,3 +21,20 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
     # Split the data into training data to test our model
     train_X, test_X, train_y, text_y = train_test_split(X, y, random_state=0, test_size=.20)
 
+    # Initialize the model and test it
+    model = LinearRegression()
+    model.fit(train_X, train_y)
+
+    #Prediction
+    y_prediction = model.predict([[input_value]])
+    y_line = model.predict(X)
+
+    # Testing for accuracy
+    y_test_prediction = model.predict(test_X)
+
+    # Plot
+    if plot:
+        raise NotImplementedError('Plot function has not been created yet')
+    
+    return Prediction(value=y_prediction[0][0],
+                    r2_score=r2_score(text_y, y_test_prediction))
