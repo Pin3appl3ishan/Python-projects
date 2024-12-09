@@ -57,7 +57,7 @@ if __name__ == '__main__':
     my_input: int = 15
 
     # Create a prediction
-    prediction: Prediction = make_prediction(inputs=years, outputs=earnings, input_value=my_input, plot=False)
+    prediction: Prediction = make_prediction(inputs=years, outputs=earnings, input_value=my_input, plot=True)
     print('Input:', my_input)
     print(prediction)
 
