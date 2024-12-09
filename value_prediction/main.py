@@ -18,7 +18,6 @@ def make_prediction(inputs: list[float], outputs: list[float], input_value: floa
     X = np.array(df['inputs']).reshape(-1, 1)
     y = np.array(df['outputs']).reshape(-1,1)
 
-    print(X)
-    print(y)
+    # Split the data into training data to test our model
+    train_X, test_X, train_y, text_y = train_test_split(X, y, random_state=0, test_size=.20)
 
-make_prediction([1,2], [3,4],0,)
